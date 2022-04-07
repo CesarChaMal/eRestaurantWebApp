@@ -1,0 +1,29 @@
+[nz-carousel-content] {
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    height: 150px;
+    line-height: 160px;
+    background: #46BEAA;
+    color: #fff;
+    overflow: hidden;
+    h1 {
+      font-size: xx-large;
+      color: #fff;
+      margin-bottom: 0;
+      user-select: none;
+    }
+  }
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.e-restaurant{
+  background: #A7CFDF;
+background: -webkit-radial-gradient(ellipse farthest-corner at center center, #A7CFDF 0%, #23538A 100%);
+background: -moz-radial-gradient(ellipse farthest-corner at center center, #A7CFDF 0%, #23538A 100%);
+background: radial-gradient(ellipse farthest-corner at center center, #A7CFDF 0%, #23538A 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}

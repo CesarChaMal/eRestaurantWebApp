@@ -1,0 +1,45 @@
+
+  .search-result-list {
+    height: max-content;
+    text-align: center;
+  }
+
+  [nz-form-label] {
+    overflow: visible;
+  }
+
+  button {
+    margin-left: 0px;
+  }
+
+  .search-area {
+    text-align: right;
+  }
+
+ 
+.collapse{
+  color: gray;
+}
+.collapse:hover{
+  color: #1890ff;
+}
+
+nz-select {
+  width: 100%;
+}
+
+button{
+  overflow: hidden;
+}
+td{
+  color: gray;
+}
+
+nz-badge {
+  margin-right: 20px;
+}
+
+nz-badge.ant-badge-rtl {
+  margin-right: 0;
+  margin-left: 20px;
+}

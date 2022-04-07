@@ -1,0 +1,13 @@
+<nz-result nzStatus="403" nzTitle="403" nzSubTitle="Sorry, you are not authorized to access this page.">
+    <div nz-result-extra>
+      <div nz-row>
+        <div nz-col nzSpan="12" nzOffset="6">
+          <textarea nz-input style="margin-bottom: 10px;" placeholder="Type the reason why you need acces to this resource" [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
+          <button nz-button nzType="default" (click)="loadTwo()" [nzLoading]="isLoadingTwo">
+            Request access
+          </button>
+          <button style="margin-left: 10px;" nz-button nzType="primary" (onclick)="backHome()">Back Home</button>
+        </div>
+      </div>
+    </div>
+</nz-result>

@@ -1,0 +1,75 @@
+{
+  "userManagement": {
+    "home": {
+      "title": "Users",
+      "refreshListLabel": "Refresh list",
+      "createLabel": "Create a new user",
+      "createOrEditLabel": "Create or edit a user",
+      "lockAllUsers":"Lock all users",
+      "sync":"Synchronize"
+    },
+    "created": "A new user is created with identifier {{ param }}",
+    "updated": "A user is updated with identifier {{ param }}",
+    "deleted": "A user is deleted with identifier {{ param }}",
+    "delete": {
+      "question": "Are you sure you want to delete user {{ login }}?"
+    },
+    "locked":"The user <a>{{ login }}</a> is now locked.",
+    "lock": {
+      "question": "Are you sure you want to lock user {{ login }}?"
+    },
+    "unlocked":"The user <a>{{ login }}</a> is now unlocked.",
+    "unlock":{
+      "question":"Are you sure you want to unlock user {{ login }}?"
+    },
+    "detail": {
+      "title": "User details",
+      "personalInfos":{
+        "title":"Personal informations",
+        "gender":"Gender",
+        "dateOfBirth":"Date of birth"
+      },
+      "contact":{
+        "title":"Contact",
+        "officeNumberPhone":"(Office number)",
+        "personal":"(Personal)"
+      },
+      "jobDetails":{
+        "title":"Job details",
+        "jobTitle":"Job title",
+        "contract":"Contract",
+        "arrivalDate":"Arrival date",
+        "departureDate":"Departure date"
+      },
+      "manager":{
+        "title":"Manager"
+      },
+      "team":{
+        "title":"Team"
+      },
+      "profiles":{
+        "title":"Profiles",
+        "level":"Level {{ level }}"
+      }
+    },
+    "update":{
+      "title":"Edit User Account"
+    },
+    "login": "Login",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "fullName":"Full Name",
+    "roles":"Roles",
+    "status":"Status",
+    "actions":"Actions",
+    "email": "Email",
+    "activated": "Activated",
+    "deactivated": "Deactivated",
+    "profiles": "Profiles",
+    "langKey": "Language",
+    "createdBy": "Created by",
+    "createdDate": "Created date",
+    "lastModifiedBy": "Modified by",
+    "lastModifiedDate": "Modified date"
+  }
+}

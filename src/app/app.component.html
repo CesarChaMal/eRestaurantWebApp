@@ -1,0 +1,201 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a target="_blank">
+        <img src="../assets/images/erestaurant.png" alt="logo">
+        <h1>e-Restaurant <span class="sidebar-version">{{ version }}</span></h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen>
+        <span title><i nz-icon nzType="dashboard"></i><span admTranslate="global.menu.sidebar.dashboard.main">Dashboard</span></span>
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/welcome">Welcome</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i nz-icon nzType="control"></i><span admTranslate="global.menu.sidebar.supervision.main">Administration</span></span>
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/user-management" admTranslate="global.menu.sidebar.supervision.users">Users</a>
+          </li>
+        </ul>
+      </li>
+<!--
+      <li nz-submenu nzTitle="Activities" nzIcon="reconciliation">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a>All</a>
+          </li>
+        </ul>
+      </li>
+-->
+    </ul>
+  </nz-sider>
+  <nz-layout class="right-layout">
+    <nz-header>
+      <div class="app-header">
+        <div nz-row>
+          <div nz-col nzFlex="50px" style="margin-right: 10px;">
+            <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              ></i>
+            </span>
+          </div>
+          <div nz-col nzFlex="auto" >
+            <div nz-row nzJustify="end" nzAlign="middle">
+
+              <div nz-col nzFlex="150px">
+                <button nz-button nzType="default" (click)="showModal1()">
+                  <i nz-icon nzType="star" nzTheme="twotone"></i>
+                  <span nz-typography nzType="secondary">Rate us</span>
+                </button>
+                <!-- Rating Modal -->
+                <nz-modal [(nzVisible)]="isVisible" nzClosable="false">
+                  <div *nzModalContent class="box">
+                    <div>
+                      <i nz-icon="" style="font-size:90px; margin-top: 20px; color:#52c41a;" nztheme="fill">
+                        <svg focusable="true" fill="currentColor" width="1em" height="1em" data-icon="check-circle" aria-hidden="true">
+                          <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"></path>
+                        </svg>
+                      </i>
+                    </div>
+                    <div style="margin-top:20px;">
+                      <h1 nz-typography>Let us know how <br> we're doing!</h1>
+                      <span nz-typography nzType="secondary" style="font-size: 20px;">We are always trying to improve what we do <br>and your feedback is invaluable!</span>
+                    </div>
+                    <div style="margin-top:35px;">
+                      <nz-rate [(ngModel)]="rateValue" [nzCharacter]="characterIcon" (ngModelChange)="rate(templateReviews)"></nz-rate>
+                      <ng-template #characterIcon let-index>
+                        <ng-container [ngSwitch]="index">
+                          <i nz-icon class="rate" nzType="frown" *ngSwitchCase="0"></i>
+                          <i nz-icon class="rate" nzType="frown" *ngSwitchCase="1"></i>
+                          <i nz-icon class="rate" nzType="meh" *ngSwitchCase="2"></i>
+                          <i nz-icon class="rate" nzType="smile" *ngSwitchCase="3"></i>
+                          <i nz-icon class="rate" nzType="smile" *ngSwitchCase="4"></i>
+                        </ng-container>
+                      </ng-template>
+                      <!-- NOTIFICATION TEMPLATE -->
+                      <!-- util: https://intercom.help/localclarity/en/articles/3188406-sample-review-responses-for-positive-no-comment-reviews#:~:text=Generic%205%2DStar%20Reviews&text=%22Thank%20you%20so%20much%20for,for%20your%205%2Dstar%20review. -->
+                      <ng-template #templateReviews>
+                        <div class="ant-notification-notice-content">
+                          <div class="ant-notification-notice-with-icon">
+                            <span class="ant-notification-notice-icon">
+                              <i nz-icon nzType="smile" style="color: rgb(16, 142, 233);"></i>
+                            </span>
+                            <div class="ant-notification-notice-message"><h5 nz-typography>Thank you!</h5></div>
+                            <div class="ant-notification-notice-description">
+                              Thank you so much for this <a><strong>5-star</strong></a> review. We really appreciate you being a customer and helping to share the word about us. 
+                              We’re here for you anytime.
+                            </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                      <!-- END -->
+                    </div>
+                  </div>
+                  <div *nzModalFooter class="box" style="padding: 15px;">
+                    <a (click)="handleCancel()">Not Now</a>
+                    <!-- <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">Custom Submit</button> -->
+                  </div>
+                </nz-modal>
+                <!-- ############# -->
+              </div>
+
+
+              <div nz-col nzFlex="130px">
+                <a nz-dropdown [nzDropdownMenu]="menuLang">
+                  <i nz-icon nzType="translation" nzTheme="outline"></i>
+                  {{ lang | findLanguageFromKey }}
+                  <i nz-icon nzType="down"></i>
+                </a>
+                <nz-dropdown-menu #menuLang="nzDropdownMenu">
+                  <ul nz-menu nzSelectable class="drop-down" style="width: 120px;">
+                    <li 
+                      *ngFor="let language of languages" 
+                      nz-menu-item 
+                      (click)="changeLanguage(language)"
+                      [nzSelected]="language === lang ? true : false"
+                      class="drop-down-item"
+                      >
+                       {{language | findLanguageFromKey }}
+                    </li>
+                  </ul>
+                </nz-dropdown-menu>
+              </div>
+
+
+              <div nz-col nzFlex="100px">
+                <nz-avatar 
+                  nz-page-header-avatar 
+                  [ngStyle]="{ 'background-color': '#00a2ae' }"
+                  nzText="{{ avatarText }}"
+                  nzSize="large"
+                ></nz-avatar>
+                <button nz-button nzNoAnimation nz-dropdown [nzDropdownMenu]="menu" style="border: none; padding: 0">
+                  <i nz-icon nzType="ellipsis" nzTheme="outline" style="font-size: 20px; vertical-align: top;"></i>
+                </button>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu nzPadding class="drop-down" style="width: 220px;">
+                    <p *ngIf="account" 
+                        style="padding: 5px 5px 5px 20px;"
+                        admTranslate="global.menu.account.signed-in-as"
+                        [translateValues]="{ username: account.login }"
+                    >Signed in as <strong>{{account.login}}</strong></p>
+                    <nz-divider style="margin: 5px 0px 5px 0px;"></nz-divider>
+                    <button nz-button style="width: 180px; margin: 10px 20px 10px 20px;">
+                      <nz-badge nzStatus="success"></nz-badge>
+                      <span nz-typography nzEllipsis admTranslate="global.menu.account.status.available">Available</span>
+                    </button>
+                    <nz-divider style="margin: 5px 0px 5px 0px;"></nz-divider>
+                    <li nz-menu-item class="drop-down-item" (click)="manageAccount()" admTranslate="global.menu.account.main">
+                      Account
+                    </li>
+                    <li nz-menu-item class="drop-down-item" admTranslate="global.menu.account.notifications">
+                      Notifications
+                    </li>
+                    <li nz-menu-item class="drop-down-item" admTranslate="global.menu.account.settings">
+                      Settings
+                    </li>
+                    <nz-divider style="margin: 5px 0px 5px 0px;"></nz-divider>
+                    <li nz-menu-item class="drop-down-item" (click)="logout()" admTranslate="global.menu.account.logout">
+                      Sign out
+                    </li>
+                  </ul>
+                </nz-dropdown-menu>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <nz-breadcrumb >
+          
+      </nz-breadcrumb>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>
+      <div style="color: gray; vertical-align: bottom;">
+        
+        <a href="">
+          <img class="worldline-img" src="../assets/images/erestaurant.png" alt="logo">
+        </a>
+        <br><span admTranslate="footer">© 2022 e-Restaurant. All rights reserved.</span>
+      </div>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>

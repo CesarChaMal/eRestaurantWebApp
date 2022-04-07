@@ -1,0 +1,75 @@
+{
+  "userManagement": {
+    "home": {
+      "title": "Benutzer",
+      "refreshListLabel": "Refresh list",
+      "createLabel": "Neuen Benutzer erstellen",
+      "createOrEditLabel": "Benutzer erstellen oder bearbeiten",
+      "lockAllUsers":"Alle Benutzer sperren",
+      "sync":"Synchronisieren"
+    },
+    "created": "Ein neuer Benutzer wurde mit ID {{ param }} erstellt",
+    "updated": "Ein Benutzer mit ID {{ param }} wurde geändert",
+    "deleted": "Ein Benutzer mit ID {{ param }} wurde gelöscht",
+    "delete": {
+      "question": "Sind Sie sicher, dass Sie den Benutzer {{ login }} löschen möchten?"
+    },
+    "locked":"The user <a>{{ login }}</a> is now locked.",
+    "lock": {
+      "question": "Are you sure you want to lock user {{ login }}?"
+    },
+    "unlocked":"The user <a>{{ login }}</a> is now unlocked.",
+    "unlock":{
+      "question":"Are you sure you want to unlock user {{ login }}?"
+    },
+    "detail": {
+      "title": "Nutzerdetails",
+      "personalInfos":{
+        "title":"Persönliche Informationen",
+        "gender":"Geschlecht",
+        "dateOfBirth":"Geburtsdatum"
+      },
+      "contact":{
+        "title":"Kontakt",
+        "officeNumberPhone":"(Telefon der Büronummer)",
+        "personal":"(Persönlich)"
+      },
+      "jobDetails":{
+        "title":"Job details",
+        "jobTitle":"Job title",
+        "contract":"Contract",
+        "arrivalDate":"Arrival date",
+        "departureDate":"Departure date"
+      },
+      "manager":{
+        "title":"Manager"
+      },
+      "team":{
+        "title":"Mannschaft"
+      },
+      "profiles":{
+        "title":"Profile",
+        "level":"Stufe {{ level }}"
+      }
+    },
+    "update":{
+      "title":"Benutzerkonto bearbeiten"
+    },
+    "login": "Login",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "fullName":"Vollständiger Name",
+    "roles":"Rollen",
+    "status":"Status",
+    "actions":"Aktionen",
+    "email": "Email",
+    "activated": "Aktiv",
+    "deactivated": "Deaktiviert",
+    "profiles": "Profile",
+    "langKey": "Sprache",
+    "createdBy": "Erstellt von",
+    "createdDate": "Erstellt am",
+    "lastModifiedBy": "Bearbeitet von",
+    "lastModifiedDate": "Zuletzt bearbeitet"
+  }
+}

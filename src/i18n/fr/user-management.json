@@ -1,0 +1,75 @@
+{
+  "userManagement": {
+    "home": {
+      "title": "Utilisateurs",
+      "refreshListLabel": "Actualiser la liste",
+      "createLabel": "Créer un nouvel utilisateur",
+      "createOrEditLabel": "Créer ou éditer un utilisateur",
+      "lockAllUsers":"Verrouiller tous",
+      "sync":"Synchroniser"
+    },
+    "created": "L'utilisateur {{ param }} a été créé.",
+    "updated": "L'utilisateur {{ param }} a été mis à jour.",
+    "deleted": "L'utilisateur {{ param }} a été supprimé.",
+    "delete": {
+      "question": "Etes-vous certain de vouloir supprimer l'utilisateur {{ login }} ?"
+    },
+    "locked":"The user <a>{{ login }}</a> is now locked.",
+    "lock": {
+      "question": "Are you sure you want to lock user {{ login }}?"
+    },
+    "unlocked":"The user <a>{{ login }}</a> is now unlocked.",
+    "unlock":{
+      "question":"Are you sure you want to unlock user {{ login }}?"
+    },
+    "detail": {
+      "title": "Détails de l'utilisateur",
+      "personalInfos":{
+        "title":"Informations personnelles",
+        "gender":"Sexe",
+        "dateOfBirth":"Date de naissance"
+      },
+      "contact":{
+        "title":"Contact",
+        "officeNumberPhone":"(Fix)",
+        "personal":"(Personnel)"
+      },
+      "jobDetails":{
+        "title":"Job details",
+        "jobTitle":"Job title",
+        "contract":"Contract",
+        "arrivalDate":"Arrival date",
+        "departureDate":"Departure date"
+      },
+      "manager":{
+        "title":"Manager"
+      },
+      "team":{
+        "title":"Equipe"
+      },
+      "profiles":{
+        "title":"Profiles",
+        "level":"Niveau {{ level }}"
+      }
+    },
+    "update":{
+      "title":"Modifier un compte utilisateur"
+    },
+    "login": "Login",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "fullName":"Nom complet",
+    "roles":"Rôles",
+    "status":"Statut",
+    "actions":"Actions",
+    "email": "Email",
+    "activated": "Activé",
+    "deactivated": "Désactivé",
+    "profiles": "Droits",
+    "langKey": "Langue",
+    "createdBy": "Créé par",
+    "createdDate": "Créé le",
+    "lastModifiedBy": "Modifié par",
+    "lastModifiedDate": "Modifié le"
+  }
+}

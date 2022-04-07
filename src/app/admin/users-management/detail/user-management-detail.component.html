@@ -1,0 +1,49 @@
+<div *ngIf="user && restaurantUser">
+    <nz-skeleton [nzLoading]="loading" [nzActive]="true" [nzAvatar]="true">
+        <nz-card class="box">
+            <div><nz-avatar [nzSize]="128" nzIcon="user"></nz-avatar></div>
+            <div><h2>{{ user.firstName }} {{ user.lastName | uppercase}}</h2></div>
+            <div><span nz-typography nzType="secondary">{{ restaurantUser.name }}</span></div>
+            <div>
+                <nz-tag nzColor="processing" *ngIf="user.activated">
+                    <i nz-icon nzType="unlock" nzTheme="twotone"></i>
+                    <span admTranslate="userManagement.activated">Activated</span>
+                </nz-tag>
+                <nz-tag nzColor="success" *ngIf="!user.activated">
+                    <i nz-icon nzType="lock" nzTheme="twotone"></i>
+                    <span admTranslate="userManagement.deactivated">Deactivated</span>
+                </nz-tag>
+                | <span nz-typography><strong>{{ user.login }}</strong></span>
+            </div>
+        </nz-card>
+    </nz-skeleton>
+
+    <!-- CONTACT -->
+    <nz-skeleton [nzLoading]="loading" [nzActive]="true">
+        <br>
+        <nz-card>
+            <nz-divider nzText="{{ 'userManagement.detail.contact.title' | translate }}" nzOrientation="left"></nz-divider>
+            <div nz-row>
+                <div nz-col nzFlex="40px" style="margin-left: 15px;">
+                    <i nz-icon nzType="phone" nzTheme="twotone"></i>
+                </div>
+                <div nz-col nzFlex="auto">
+                    <p nz-typography nzCopyable nzCopyText="{{restaurantUser.description}}">
+                        {{ restaurantUser.description }}
+                        <span admTranslate="userManagement.detail.contact.description"> (description)</span>
+                    </p>
+                    <!-- <p nz-typography nzCopyable nzCopyText="+33617359016">+33617359016 (Personal)</p> -->
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzFlex="40px" style="margin-left: 15px;">
+                    <i nz-icon nzType="mail" nzTheme="twotone"></i>
+                </div>
+                <div nz-col nzFlex="auto" *ngIf="user">
+                    <p nz-typography nzCopyable nzCopyText="{{ user.email }}">{{ user.email }}</p>
+                </div>
+            </div>
+        </nz-card>
+    </nz-skeleton>
+
+</div>

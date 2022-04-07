@@ -1,0 +1,143 @@
+<div nz-row>
+  <div nz-col nzFlex="auto">
+    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+      <input type="text" #searchText nz-input placeholder="{{ 'global.search' | translate }}" >
+    </nz-input-group>
+    <ng-template #suffixIconButton>
+        <button nz-button nzType="primary" nzSearch class="search-button"><i nz-icon nzType="search"></i></button>
+    </ng-template>
+  </div>
+  <div nz-col nzFlex="auto">
+    <div nz-row nzJustify="end">
+      <div nz-col nzFlex="50px" style="margin-right: 10px;">
+        <button nz-button nzType="default" nzBlock>
+          <i nz-icon nzType="lock"></i>
+          <span admTranslate="userManagement.home.lockAllUsers">Lock all users</span>
+        </button>
+      </div>
+      <div nz-col nzFlex="50px">
+        <button nz-button nzType="primary" nzBlock>
+          <i nz-icon nzType="sync"></i>
+          <span admTranslate="userManagement.home.sync">Synchronize</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="search-result-list">
+    <nz-table
+        nzShowSizeChanger
+        [nzData]="users"
+        [nzFrontPagination]="false"
+        [nzLoading]="loading"
+        [nzTotal]="total"
+        [nzPageSize]="pageSize"
+        [nzPageIndex]="pageIndex"
+        (nzQueryParams)="onQueryParamsChange($event)"
+      >
+      <thead>
+        <tr>
+          <th nzColumnKey="picture"></th>
+          <th nzColumnKey="login" [nzSortFn]="true" admTranslate="userManagement.login">Login</th>
+          <th nzColumnKey="fullName" admTranslate="userManagement.fullName">Full Name</th>
+          <th nzColumnKey="email" [nzSortFn]="true" admTranslate="userManagement.email">Email</th>
+          <th nzColumnKey="email" [nzSortFn]="true" admTranslate="userManagement.langKey">Lang</th>
+          <th nzColumnKey="phone" admTranslate="userManagement.roles">Roles</th>
+          <th nzColumnKey="status" [nzSortFn]="true" admTranslate="userManagement.status">Status</th>
+          <th nzColumnKey="actions" admTranslate="userManagement.actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>
+            <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+            <nz-badge *ngIf="user.activated" nzStatus="processing"></nz-badge>
+          </td>
+          <td>{{ user.login }}</td>
+          <td>{{ user.firstName }} {{ user.lastName | uppercase }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.langKey !== undefined ? (user.langKey | findLanguageFromKey) : ''}}</td>
+          <td>
+            <nz-tag *ngFor="let role of user.authorities">{{ role | slice:5 }}</nz-tag>
+          </td>
+          <td>
+            <nz-tag nzColor="processing" *ngIf="user.activated; else deactivatedTpl">
+              <i nz-icon nzType="unlock" nzTheme="twotone"></i>
+              <span admTranslate="userManagement.activated">Activated</span>
+            </nz-tag>
+            <ng-template #deactivatedTpl>
+              <nz-tag nzColor="success">
+                <i nz-icon nzType="lock" nzTheme="twotone"></i>
+                <span admTranslate="userManagement.deactivated">Deactivated</span>
+              </nz-tag>
+            </ng-template>
+          </td>
+          <td>
+            <nz-button-group>
+              <button nz-button nzType="default">
+                <i  nz-icon 
+                    *ngIf="user.activated; else userDeactivatedTpl" 
+                    nz-popconfirm 
+                    nzPopconfirmPlacement="topRight"
+                    nzPopconfirmTitle="{{ 'userManagement.lock.question' | translate:{'login': user.login } }}"
+                    (nzOnConfirm)="setActive(user)"
+                    nzType="unlock" 
+                    nzTheme="twotone"
+                ></i>
+                <ng-template #userDeactivatedTpl>
+                  <i 
+                    nz-popconfirm 
+                    nzPopconfirmPlacement="topRight"
+                    nzPopconfirmTitle="{{ 'userManagement.unlock.question' | translate:{'login': user.login } }}"
+                    nz-icon 
+                    (nzOnConfirm)="setActive(user)" 
+                    nzType="lock-twotone" nzTheme="twotone"
+                  ></i>
+                </ng-template>
+              </button>
+              <button nz-button nzType="default" (click)="userDetail(user)" ><i nz-icon nzType="eye" nzTheme="twotone"></i></button>
+              <button nz-button nzType="default" (click)="editAccount(user)" ><i nz-icon nzType="edit-twotone"></i></button>
+            </nz-button-group>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+</div>
+
+
+<div *ngIf="selectedUser">
+  <nz-drawer
+      [nzBodyStyle]="{ overflow: 'auto' }"
+      [nzMaskClosable]="true"
+      [nzWidth]="700"
+      [nzVisible]="visible"
+      [nzTitle]="titleTemplate"
+      (nzOnClose)="close()"
+    >
+    <ng-template #titleTemplate>
+        <nz-page-header class="site-page-header">
+            <nz-page-header-title>
+                <i nz-icon nzType="team" nzTheme="outline"></i>
+                {{ userDrawer }}
+            </nz-page-header-title>
+            <nz-page-header-subtitle></nz-page-header-subtitle>
+        </nz-page-header>
+    </ng-template>
+
+    <ng-container *nzDrawerContent>
+      <app-user-management-detail
+        *ngIf="action==='VIEW'"
+        [user]="selectedUser"
+      >
+      </app-user-management-detail>
+
+      <app-user-management-update 
+        *ngIf="action==='EDIT'"
+        [user]="selectedUser"
+        >
+      </app-user-management-update>
+    </ng-container>
+</nz-drawer>
+</div>

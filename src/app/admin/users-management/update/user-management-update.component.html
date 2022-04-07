@@ -1,0 +1,125 @@
+<nz-tabset>
+
+    <!-- Edit user Details -->
+    <nz-tab [nzTitle]="details">
+        <ng-template #details>
+          <i nz-icon nzType="idcard" nzTheme="outline"></i>
+          Details
+        </ng-template>
+        <form nz-form [formGroup]="editForm" (ngSubmit)="save()" [nzLayout]="'vertical'">
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="field_dasId" nzRequired>
+                  <span nz-typography nzType="secondary">DAS ID</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="The input is not valid Name!">
+                  <input 
+                  nz-input 
+                  formControlName="dasId" 
+                  name="dasId" 
+                  id="field_dasId" 
+                  [readonly]="true"
+                  />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="field_team">
+                  <span nz-typography nzType="secondary">Team</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="24" [nzXs]="24" >
+                    <nz-select
+                        nzPlaceHolder="Select a team to join"
+                        nzAllowClear
+                        nzShowSearch
+                        formControlName="team" 
+                        name="team" 
+                        id="field_team"
+                        [nzCustomTemplate]="defaultTemplate"
+                        >
+                        <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+                            <i nz-icon nzType="loading" class="loading-icon"></i>
+                            Loading Data...
+                        </nz-option>
+                    </nz-select>
+                    <ng-template #defaultTemplate let-selected>
+                        <nz-avatar [nzShape]="'square'" nzSize="small" nzIcon="user" [nzSrc]="'data:' + selected.nzValue.imageContentType + ';base64,' + selected.nzValue.image"></nz-avatar>
+                        {{ selected.nzLabel }}
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+        
+            <nz-form-item>
+                <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="field_serviceName">
+                  <span nz-typography nzType="secondary">Service Name</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="The input is not valid Name! This field is required to be at least 3 characters.">
+                  <input nz-input formControlName="serviceName" name="serviceName" id="field_serviceName" placeholder="Type a service name"/>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="field_office">
+                  <span nz-typography nzType="secondary">Office</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="The input is not valid Name! This field is required to be at least 3 characters.">
+                  <input nz-input formControlName="office" name="office" id="field_office" placeholder="Type your office name"/>
+                </nz-form-control>
+            </nz-form-item>
+            
+            <nz-form-item>
+                <nz-form-label [nzSm]="24" [nzXs]="24" nzFor="field_officeNumberPhone">
+                  <span nz-typography nzType="secondary">Office Number Phone</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="The input is not valid Name! This field is required to be at least 5 characters."
+                nzWarningTip="Warning">
+                  <input 
+                    nz-input  
+                    formControlName="officeNumberPhone" 
+                    name="officeNumberPhone" 
+                    id="field_officeNumberPhone" 
+                    placeholder="Type your office name"
+                    />
+                </nz-form-control>
+            </nz-form-item>
+
+            
+
+            <br>
+            <br>
+            <nz-form-item nz-row>
+                <nz-form-control [nzSm]="24" [nzXs]="24" >
+                    <button nz-button nzType="primary" [nzLoading]="isSaving">
+                      Update user
+                    </button>
+                    <!--<button *nzSpaceItem  nz-button (click)="closeDrawer()">Cancel</button>-->
+                </nz-form-control>
+            </nz-form-item> 
+        </form>
+    </nz-tab>
+    <!-- END Edit user Details -->
+
+    <!-- Edit user Roles -->
+    <nz-tab [nzTitle]="roles">
+        <ng-template #roles>
+            <i nz-icon nzType="idcard" nzTheme="outline"></i>
+            Roles
+        </ng-template>
+        <!-- Edit user Profiles -->
+        <nz-transfer
+        [nzDataSource]="list"
+        [nzDisabled]="disabled"
+        [nzTitles]="['Source', 'Target']"
+        [nzSelectedKeys]="['0', '2']"
+        ></nz-transfer>
+        <div style="margin-top: 8px;">
+        <nz-switch [(ngModel)]="disabled" nzCheckedChildren="disabled" nzUnCheckedChildren="disabled"></nz-switch>
+        <div></div>
+        </div>
+        <!-- END Edit user Profiles -->
+    </nz-tab>
+    <!-- END Edit user Roles -->
+</nz-tabset>
+
+
+<!-- (nzOnSearch)="onSearchForTeams($event)" -->
