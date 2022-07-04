@@ -46,7 +46,63 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzRateModule } from 'ng-zorro-antd/rate';
+import { NzBackTopModule } from 'ng-zorro-antd/back-top';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzTimelineModule } from 'ng-zorro-antd/timeline';
+
 @NgModule({
+    imports: [
+      NzTimelineModule,
+      NzSpinModule,
+      NzBackTopModule,
+      NzRateModule,
+      NzImageModule,
+      NzCarouselModule,
+      NzNotificationModule,
+      NzSliderModule,
+      NzInputNumberModule,
+      NzToolTipModule,
+      NzBreadCrumbModule,
+      NzDividerModule,
+      NzPaginationModule,
+      NzResultModule,
+      NzDropDownModule,
+      NzCalendarModule,
+      NzAvatarModule,
+      NzFormModule,
+      NzButtonModule,
+      NzIconModule,
+      NzInputModule,
+      NzSpaceModule,
+      NzBadgeModule,
+      NzRadioModule,
+      NzEmptyModule,
+      NzCollapseModule,
+      NzSelectModule,
+      NzMessageModule,
+      NzTableModule,
+      NzTagModule,
+      NzPopconfirmModule,
+      NzTabsModule,
+      NzDatePickerModule,
+      NzAlertModule,
+      NzSwitchModule,
+      NzTransferModule,
+      NzStatisticModule,
+      NzDrawerModule,
+      NzPageHeaderModule,
+      NzUploadModule,
+      NzModalModule,
+      NzTypographyModule,
+      NzTreeSelectModule,
+      NzCardModule,
+      NzDescriptionsModule,
+      NzCommentModule,
+      NzStepsModule,
+      NzListModule,
+      NzSkeletonModule,
+      NzPopoverModule
+    ],
     exports: [
         NzRateModule,
         NzImageModule,

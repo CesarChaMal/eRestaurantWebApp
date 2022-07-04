@@ -1,0 +1,11 @@
+export enum Contract {
+  CDI = 'CDI',
+
+  CDD = 'CDD',
+
+  INTERIM = 'INTERIM',
+
+  ALTERNANCE_PRO = 'ALTERNANCE_PRO',
+
+  ALTERNANCE_APP = 'ALTERNANCE_APP',
+}

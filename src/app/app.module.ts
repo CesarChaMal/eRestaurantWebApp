@@ -74,7 +74,8 @@ import {UserManagementUpdateComponent} from "./admin/users-management/update/use
     ReactiveFormsModule,
     NgxWebstorageModule.forRoot(),
     SharedModule,
-    TranslationModule
+    TranslationModule,
+    HelpAndResourcesModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
