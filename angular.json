@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -23,7 +26,7 @@
             "customWebpackConfig": {
               "path": "./webpack/webpack.custom.js"
             },
-            "outputPath": "dist/e-restaurant-app",
+            "outputPath": "dist/e-restaurant-web-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -120,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "AdmiralApp"
+  "defaultProject": "eRestaurantWebApp"
 }
