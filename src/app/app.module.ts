@@ -29,6 +29,17 @@ import { TranslateDirective } from '@ngx-translate/core';
 import {NotFoundComponent} from "./result/not-found/not-found.component";
 import {BadRequestComponent} from "./result/bad-request/bad-request.component";
 import {UserManagementUpdateComponent} from "./admin/users-management/update/user-management-update.component";
+import { HelpAndResourcesModule } from './pages/help-and-resources/help-and-resources.module';
+import { HelpAndResourcesMenuComponent } from './pages/help-and-resources/help-and-resources-menu/help-and-resources-menu.component';
+import { HelpCenterComponent } from './pages/help-and-resources/help-center/help-center.component';
+import { SupportForumComponent } from './pages/help-and-resources/support-forum/support-forum.component';
+import { VideosComponent } from './pages/help-and-resources/videos/videos.component';
+import { ReleaseNotesComponent } from './pages/help-and-resources/release-notes/release-notes.component';
+import { LegalSummaryComponent } from './pages/help-and-resources/legal-summary/legal-summary.component';
+import { SubmitFeedbackComponent } from './pages/help-and-resources/submit-feedback/submit-feedback.component';
+import { AskTheCommunityComponent } from './pages/help-and-resources/ask-the-community/ask-the-community.component';
+import { ContactSupportComponent } from './pages/help-and-resources/contact-support/contact-support.component';
+
 
 //registerLocaleData(en);
 
@@ -54,6 +65,15 @@ import {UserManagementUpdateComponent} from "./admin/users-management/update/use
     InternalServerErrorComponent,
     BadRequestComponent,
     VerbNotAllowedComponent,
+    HelpAndResourcesMenuComponent,
+    HelpCenterComponent,
+    SupportForumComponent,
+    VideosComponent,
+    ReleaseNotesComponent,
+    LegalSummaryComponent,
+    SubmitFeedbackComponent,
+    AskTheCommunityComponent,
+    ContactSupportComponent,
     UsersManagementComponent,
     UserManagementDetailComponent,
     UserManagementUpdateComponent
